@@ -1,0 +1,65 @@
+.app-container {
+    height: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 20px;
+    margin: auto;
+    margin-top: 20vh;
+    background: linear-gradient(270deg, rgb(252, 167, 57), rgba(131,58,180,1));
+    background-size: 400% 400%;
+    -webkit-animation: AnimationName 8s ease infinite;
+    -moz-animation: AnimationName 8s ease infinite;
+    animation: AnimationName 8s ease infinite;
+}
+.app-container .home {
+    width: 100%;
+    height: 100%;
+}
+.external-download {
+    width: 100%;
+}
+.external-download .text-box {
+    color: white;
+    text-align: center;
+}
+.break-row {
+    flex-basis: 100%;
+    height: 0;
+}
+
+@media (max-width: 2560px) {
+    .app-container {
+        width: 55%;
+    }   
+}
+@media (max-width: 1920px) {
+    .app-container {
+        width: 65%;
+    }   
+}  
+@media (max-width: 1280px) {
+    .app-container {
+        width: 75%;
+    }   
+} 
+@media (max-width: 640px) {
+    .app-container {
+        width: 85%;
+    }   
+} 
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}

@@ -1,0 +1,39 @@
+.table-container {
+    width: 100%;
+    height: 40%;
+}
+.datatable {
+    padding: 0px 20px 20px 20px;
+}
+.function-btns {
+    display: flex;
+    margin-right: 0.5em;
+}
+.function-btns button {
+    margin: 0px 5px 0px 5px;
+}
+.function-btns button img {
+    filter: invert(1);
+}
+.p-datatable {
+    border-radius: 10px;
+}
+.datatable .p-paginator .p-paginator-current {
+    margin-left: auto;
+}
+.datatable .p-datatable.p-datatable-files .p-datatable-header {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.5rem;
+    border-radius: 10px 10px 0px 0px;
+}
+.datatable .p-datatable.p-datatable-files .p-paginator {
+    padding: 1rem;
+    border-radius: 0px 0px 10px 10px;
+}
+.datatable .p-datatable.p-datatable-files .p-datatable-thead > tr > th {
+    text-align: left;
+}
+.datatable .p-datatable.p-datatable-files .p-dropdown-label:not(.p-placeholder) {
+    text-transform: uppercase;
+}

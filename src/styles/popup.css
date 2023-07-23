@@ -1,0 +1,84 @@
+.popup-link-container,
+.popup-preview-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-preview {
+    position: relative;
+    padding: 72px 20px 40px 20px;
+    width: 100%;
+    max-width: 840px;
+    height: 1000px;
+    background-color: #efefef;
+    border-radius: 10px;
+}
+
+.popup-link {
+    position: relative;
+    padding: 72px 20px 40px 20px;
+    width: 100%;
+    max-width: 900px;
+    height: 170px;
+    background-color: #efefef;
+    border-radius: 10px;
+}
+
+.popup-link .close-btn,
+.popup-preview .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.popup-content-container {
+    background-color: #FFF;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.popup-content-container .content-container-inner {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    overflow: auto;
+    text-align: center;
+}
+
+.popup-content-container .content-container-inner img {
+    height: auto; 
+    width: auto; 
+    max-width: 840px; 
+    max-height: 1000px;
+}
+
+.inner-link-container {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    background-color: #efefef;
+}
+.inner-link-container .copy-btn {
+    background-color: gray;
+    margin-right: 7px;
+}
+
+.inner-link-container .link-input {
+    flex-grow: 25;
+}
+
+.inner-link-container .link-time {
+    flex-grow: 1;
+    margin-left: 7px;
+    color: red;
+}
