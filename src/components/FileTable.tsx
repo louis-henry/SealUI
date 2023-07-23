@@ -171,10 +171,10 @@ const FileTable = () => {
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
                     <Column selectionMode="multiple" headerStyle={{ width: '3em' }}></Column>
                     <Column field="type" header="Type" style={{ minWidth: '1em' }} body={typeBodyTemplate} />
-                    <Column field="name" header="Name" sortable style={{ minWidth: '10rem' }} />
+                    <Column field="name" header="Name" sortable style={{ maxWidth: '200px', overflow: 'hidden' }} />
                     <Column field="cts" header="Uploaded" sortable dataType="date" style={{ minWidth: '15rem' }} body={dateBodyTemplate}/>
                     <Column field="size" header="Size" sortable style={{ minWidth: '2rem' }} body={sizeBodyTemplate}/>
-                    <Column field="downloadCount" header="Downloads" sortable style={{ minWidth: '2rem' }} />
+                    <Column field="downloadCount" header="Downloads" sortable style={{ minWidth: '2rem', textAlign: 'center' }} />
                     <Column headerStyle={{ width: '4rem', textAlign: 'center' }} bodyStyle={{ textAlign: 'center', overflow: 'visible' }} body={actionBodyTemplate} />
                 </DataTable>
             </div>
