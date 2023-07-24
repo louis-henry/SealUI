@@ -23,7 +23,7 @@ export class FileType {
       case FileTypeEnum.DOC:
         return isForIcon ? 'doc.png' : 'application/msword';
       case FileTypeEnum.DOCX:
-        return isForIcon ? 'doc.png' : 'application/pdf';
+        return isForIcon ? 'doc.png' : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
       case FileTypeEnum.TXT:
         return isForIcon ? 'txt.png' : 'text/plain';
       case FileTypeEnum.PNG:
