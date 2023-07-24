@@ -20,6 +20,7 @@
     height: 80vh;
     background-color: #efefef;
     border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.95);
 }
 
 .popup-link {
@@ -30,6 +31,7 @@
     height: 170px;
     background-color: #efefef;
     border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.95);
 }
 
 .popup-link .close-btn,

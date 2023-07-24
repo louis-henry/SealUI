@@ -5,7 +5,7 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import DocViewer, { DocViewerRenderers } from 'react-doc-viewer';
+import DocViewer, { DocViewerRenderers } from '@cyntler/react-doc-viewer';
 
 /* Services */
 import { FileService } from '../services/FileService';
@@ -15,7 +15,6 @@ import AlertService from '../services/AlertService';
 /* Components */
 import Popup from './Popup';
 import FileType from '../constants/file-type';
-import FileModel from '../models/FileModel'
 
 /* Misc */
 import SharedDataContext from '../utils/SharedDataContext';
@@ -29,8 +28,7 @@ const FileTable = () => {
     const [loading, setLoading] = useState(true);
     const [buttonPreview, setButtonPreview] = useState(false);
     const [buttonLink, setButtonLink] = useState(false);
-    const [previewFile, setPreviewFile] = useState<Blob>();
-    const [prevFiles, setPrevFiles] = useState<FileModel[]>([]);
+    const [docs, setDocs] = useState<any>([]);
     const [downloadLink, setDownloadLink] = useState<string>('');
     const [linkTime, setLinkTime] = useState<string>('');
     const fileService = new FileService();
@@ -66,7 +64,7 @@ const FileTable = () => {
     const typeBodyTemplate = (rowData: any) => {
         return (
             <React.Fragment>
-                <img src={require('../assets/imgs/file/' + FileType.resolveFileTypeForTable(rowData.type))} width={40}/>
+                <img src={require('../assets/imgs/file/' + FileType.resolveFileType(rowData.type))} width={40}/>
             </React.Fragment>
         );
     }
@@ -95,39 +93,20 @@ const FileTable = () => {
         );
     }
 
-    // TODO: Implement file preview
-    // const previewBodyTemplate = () => {
-    //     <React.Fragment>
-    //         <DocViewer
-    //             pluginRenderers={DocViewerRenderers}
-    //             documents={prevFiles.length > 0 ? prevFiles.map((file) => ({
-    //                 uri: URL.createObjectURL(file.data),
-    //                 fileName: file.name,
-    //                 })) : []}
-    //             config={{
-    //                 header: {
-    //                     disableHeader: false,
-    //                     disableFileName: false,
-    //                     retainURLParams: false
-    //                     }
-    //                 }}
-    //             style={{ height: 500 }}
-    //         />
-    //     </React.Fragment>
-    // }
-
     async function downloadBtnClicked(rowData: any) {
         await fileService.downloadFiles(selectedFiles);
         reloadFiles();
-        alertService.showSuccess(`File${(selectedFiles.length > 1 ? 's' : '')} downloaded`);
+        alertService.showInfo(`File${(selectedFiles.length > 1 ? 's' : '')} downloading...`);
     }
 
     async function previewBtnClicked(rowData: any) {
         await fileService.getForPreview(rowData)
-        .then(data => {
-            setPrevFiles([]);
-            prevFiles.push(data);
-            setPreviewFile(data.data);
+        .then(file => {
+            if (file.data) {
+                let arr: any = [];
+                arr.push(file);
+                setDocs(arr);
+            }
             setButtonPreview(true);
         });
     }
@@ -181,8 +160,23 @@ const FileTable = () => {
             <Popup purpose="preview" trigger={buttonPreview} setTrigger={setButtonPreview}>
                 <div className="popup-content-container">
                     <div className="content-container-inner">
-                        <img src={previewFile && previewFile.size > 0 ? URL.createObjectURL(previewFile) : ''} />
-                        {/* TODO: Implement preview for non-image files */}
+                        <DocViewer
+                            allow-scripts={true}
+                            pluginRenderers={DocViewerRenderers}
+                            documents={docs.map((file: any) => ({
+                                uri: window.URL.createObjectURL(file.data),
+                                fileName: file.name,
+                                fileType: FileType.resolveFileType(file.type, false)
+                              }))}
+                            config={{
+                                header: {
+                                    disableHeader: false,
+                                    disableFileName: false,
+                                    retainURLParams: false
+                                    }
+                                }}
+                            style={{ height: '100%' }}
+                        />
                     </div>
                 </div>
             </Popup>

@@ -1,4 +1,4 @@
-enum FileTypeEnum {
+export enum FileTypeEnum {
     UNKNOWN = -1,
     PDF,
     XLS,
@@ -12,24 +12,27 @@ enum FileTypeEnum {
   }
 
 export class FileType {
-  static resolveFileTypeForTable(type: number) : string {
+  static resolveFileType(type: number, isForIcon: boolean  = true) : string {
     switch(type) {
       case FileTypeEnum.PDF:
-        return 'pdf.png';
+        return isForIcon ? 'pdf.png' : 'application/pdf';
       case FileTypeEnum.XLS:
+        return isForIcon ? 'xls.png' : 'application/vnd.ms-excel';
       case FileTypeEnum.XLSX:
-        return 'xls.png';
+        return isForIcon ? 'xls.png' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
       case FileTypeEnum.DOC:
+        return isForIcon ? 'doc.png' : 'application/msword';
       case FileTypeEnum.DOCX:
-        return 'doc.png';
+        return isForIcon ? 'doc.png' : 'application/pdf';
       case FileTypeEnum.TXT:
-        return 'txt.png';
+        return isForIcon ? 'txt.png' : 'text/plain';
       case FileTypeEnum.PNG:
+        return isForIcon ? 'img.png' : 'image/png';
       case FileTypeEnum.JPEG:
       case FileTypeEnum.JPG:
-        return 'img.png';
+        return isForIcon ? 'img.png' : 'image/jpeg';
       default:
-        return 'unknown.png';
+        return isForIcon ? 'unknown.png' : 'application/octet-stream';
     }
   }
 

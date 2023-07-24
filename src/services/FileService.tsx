@@ -1,6 +1,6 @@
 import { FileUploadHandlerEvent } from "primereact/fileupload";
 import FileModel from "../models/FileModel";
-import FileType from "../constants/file-type";
+import FileType, { FileTypeEnum } from "../constants/file-type";
 import { ApiService } from "./ApiService";
 
 export class FileService extends ApiService<FileModel> {
@@ -58,6 +58,7 @@ export class FileService extends ApiService<FileModel> {
     async getForPreview(file: FileModel) {
       return this._get(`${this.endpoint}/Preview/${file.id}`).then(response => {
         if (response.length > 0) {
+          // Convert data to Blob format as we will pass this to our renderer
           file.data = this.dataURItoBlob(response);
         }
         return file;
