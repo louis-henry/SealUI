@@ -6,6 +6,7 @@ A development UI designed for a technical interview. This project should be used
 - Open the project folder in VS Code.
 - Open a terminal and run 'npm install'
 - Then run 'npm start'
+- By default, you should be able to access via localhost:3000
 
 ## More Information
 - If using a customised url/port for SealAPI or SealUI, you will need to udpate the url reference in the SealUI project in (src/Constants/Config.tsx)
