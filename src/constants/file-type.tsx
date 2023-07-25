@@ -17,13 +17,13 @@ export class FileType {
       case FileTypeEnum.PDF:
         return isForIcon ? 'pdf.png' : 'application/pdf';
       case FileTypeEnum.XLS:
-        return isForIcon ? 'xls.png' : 'application/vnd.ms-excel';
+        return isForIcon ? 'xls.png' : 'image/png';
       case FileTypeEnum.XLSX:
-        return isForIcon ? 'xls.png' : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        return isForIcon ? 'xls.png' : 'image/png';
       case FileTypeEnum.DOC:
-        return isForIcon ? 'doc.png' : 'application/msword';
+        return isForIcon ? 'doc.png' : 'image/png';
       case FileTypeEnum.DOCX:
-        return isForIcon ? 'doc.png' : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        return isForIcon ? 'doc.png' : 'image/png';
       case FileTypeEnum.TXT:
         return isForIcon ? 'txt.png' : 'text/plain';
       case FileTypeEnum.PNG:
